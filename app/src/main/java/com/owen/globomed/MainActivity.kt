@@ -15,4 +15,8 @@ class MainActivity : AppCompatActivity() {
            startActivityForResult(addEmployee, 1)
        }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 }
