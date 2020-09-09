@@ -8,7 +8,7 @@ object GloboMedContract {
 
     object EmployeeEntry:BaseColumns{
         const val TABLE_NAME = "employee"
-        const val COLUMN_ID = "id"
+        const val COLUMN_ID:String =_ID
         const val COLUMN_NAME = "name"
         const val COLUMN_DOB = "dob"
         const val COLUMN_DESIGNATION = "designation"
@@ -16,7 +16,7 @@ object GloboMedContract {
         //create the Query here
         const val SQL_CREATE_ENTRIES: String = "" +
                 "CREATE TABLE $TABLE_NAME(" +
-                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NAME TEXT NOT NULL, " +
                 "$COLUMN_DOB INTEGER NOT NULL, " +
                 "$COLUMN_DESIGNATION TEXT NOT NULL)"
