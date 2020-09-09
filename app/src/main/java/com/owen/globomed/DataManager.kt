@@ -28,6 +28,21 @@ object DataManager {
             null,
             null)
 
+        val idPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_ID)
+        val namePos = cursor.getColumnIndex(EmployeeEntry.COLUMN_NAME)
+        val dobPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DOB)
+        val designationPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DESIGNATION)
+
+        while (cursor.moveToNext()){
+
+            val id = cursor.getString(idPos)
+            val name = cursor.getString(namePos)
+            val dob = cursor.getLong(dobPos)
+            val designation = cursor.getString(designationPos)
+
+            employees.add(Employee(id, name,dob,designation))
+        }
+        cursor.close()
         return employees
     }
 }
