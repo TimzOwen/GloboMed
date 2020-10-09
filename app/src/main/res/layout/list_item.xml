@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/tvEmpName"
             android:textSize="18sp"
-            android:text="Full Name"
+            android:text="@string/full_name"
             android:textStyle="bold"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
             android:id="@+id/tvEmpDesgn"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="Designation"
+            android:text="@string/designation"
             android:textColor="#616161"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
