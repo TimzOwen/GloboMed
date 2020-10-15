@@ -45,4 +45,33 @@ object DataManager {
         cursor.close()
         return employees
     }
+
+    fun fetchEmployee(databaseHelper: DatabaseHelper, empId:String)
+    {
+        val db = databaseHelper.readableDatabase
+        val employee : Employee? = null
+
+        val columns:Array<String> = arrayOf(
+            EmployeeEntry.COLUMN_NAME,
+            EmployeeEntry.COLUMN_DOB,
+            EmployeeEntry.COLUMN_DESIGNATION
+        )
+        val selection: String = EmployeeEntry.COLUMN_ID + " LIKE ? "
+
+        val selectionArgs : Array<String>  =  arrayOf(empId)
+
+        val cursor : Cursor = db.query(EmployeeEntry.TABLE_NAME,
+            columns,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null)
+
+
+        val namePos = cursor.getColumnIndex(EmployeeEntry.COLUMN_NAME)
+        val dobPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DOB)
+        val designationPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DESIGNATION)
+
+    }
 }
