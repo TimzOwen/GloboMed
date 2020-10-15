@@ -46,10 +46,10 @@ object DataManager {
         return employees
     }
 
-    fun fetchEmployee(databaseHelper: DatabaseHelper, empId:String)
+    fun fetchEmployee(databaseHelper: DatabaseHelper, empId:String) : Employee?
     {
         val db = databaseHelper.readableDatabase
-        val employee : Employee? = null
+        var employee : Employee? = null
 
         val columns:Array<String> = arrayOf(
             EmployeeEntry.COLUMN_NAME,
@@ -72,6 +72,19 @@ object DataManager {
         val namePos = cursor.getColumnIndex(EmployeeEntry.COLUMN_NAME)
         val dobPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DOB)
         val designationPos = cursor.getColumnIndex(EmployeeEntry.COLUMN_DESIGNATION)
+
+        while (cursor.moveToNext())
+        {
+            val name = cursor.getString(namePos)
+            val dob = cursor.getLong(dobPos)
+            val designation = cursor.getString(designationPos)
+
+            employee = Employee(empId,name,dob, designation )
+        }
+
+        cursor.close()
+
+        return employee
 
     }
 }
